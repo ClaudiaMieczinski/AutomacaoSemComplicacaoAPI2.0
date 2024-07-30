@@ -5,7 +5,7 @@ Funcionalidade: Realizar login
 
   @loginSucesso @regressivo
   Cenario: Realizar Login com Sucesso
-    Dado que eu tenha um payload valido da API de Login
+    Dado que tenha um payload valido da API de Login
     Quando envio uma requisicao do tipo POST de Login
     Entao valido que recebo status 200 no response
     E armazeno o token que recebo do response de Login
@@ -13,7 +13,7 @@ Funcionalidade: Realizar login
 
   @loginInvalido
   Esquema do Cenario: Realizar Login com <cenario>
-    Dado que eu tenha um payload da API de Login com as seguintes informacoes
+    Dado que tenha um payload da API de Login com as seguintes informacoes
       | email | <email> |
       | senha | <senha> |
     Quando envio uma requisicao do tipo POST de Login
