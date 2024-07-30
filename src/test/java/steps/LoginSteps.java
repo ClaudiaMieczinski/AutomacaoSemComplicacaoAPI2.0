@@ -14,18 +14,26 @@ public class LoginSteps {
     String url = "http://localhost:8080/";
 
     @Dado("que eu tenha um payload valido da API de Login")
-    public void queEuTenhaUmPayloadValidoDaAPIDeLogin() {
+    public void queTenhaUmPayloadValidoDaAPIDeLogin() {
         LoginMap.initLogin();
         RestUtils.setBaseURI(url);
     }
 
     @Dado("que eu tenha um payload da API de Login com as seguintes informacoes")
-    public void queEuTenhaUmPayloadDaAPIDeLoginComAsSeguintesInformacoes(Map<String, Object> map) {
+    public void queTenhaUmPayloadDaAPIDeLoginComAsSeguintesInformacoes(Map<String, Object> map) {
         LoginMap.initLogin();
         RestUtils.setBaseURI(url);
         LoginMap.getLogin().putAll(map);
 
    }
+
+    @Dado("que tenha realizado o login com dados validos")
+    public void queTenhaRealizadoOLoginComDadosValidos() {
+        queTenhaUmPayloadValidoDaAPIDeLogin();
+        envioUmaRequisicaoDoTipoPOSTDeLogin();
+        armazenoOTokenQueReceboDoResponseDeLogin();
+
+    }
 
     @Quando("envio uma requisicao do tipo POST de Login")
     public void envioUmaRequisicaoDoTipoPOSTDeLogin() {
