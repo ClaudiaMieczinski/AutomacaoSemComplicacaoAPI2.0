@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FilmesMap {
+    public static  int id;
     private static Map<String, String> header;
     private static Map<String, Object> filme;
     private static Map<String, Object> categoria1;
@@ -58,9 +59,9 @@ public class FilmesMap {
     }
 
     public static void initPlataforma(){
-        listCategoria = new ArrayList<>();
+        listPlataforma = new ArrayList<>();
         plataforma = new HashMap<>();
-        plataforma.put("nome", "Netflix");
+        plataforma.put("nome", "NetFlix");
         listPlataforma.add(plataforma);
     }
 
