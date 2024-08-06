@@ -14,16 +14,16 @@ public class RestUtils {
         return response;
     }
 
-    public static void setBaseURI(String uri){
+    public static void setBaseURI(String uri) {
         RestAssured.baseURI = uri;
     }
 
-    public static String getBaseUri(){
+    public static String getBaseUri() {
         return RestAssured.baseURI;
     }
 
 
-    public static Response post(Object json, ContentType contentType, String endpoint){
+    public static Response post(Object json, ContentType contentType, String endpoint) {
         return response = RestAssured.given()
                 .relaxedHTTPSValidation()
                 .contentType(contentType)
@@ -34,7 +34,7 @@ public class RestUtils {
     }
 
 
-    public static Response post(Map<String, String> header, Object json, ContentType contentType, String endpoint){
+    public static Response post(Map<String, String> header, Object json, ContentType contentType, String endpoint) {
         return response = RestAssured.given()
                 .relaxedHTTPSValidation()
                 .contentType(contentType)
@@ -62,4 +62,31 @@ public class RestUtils {
                 .extract().response();
     }
 
+    public static Response get(Map<String, String> header, Map<String, Object> param, String endpoint) {
+        return response = RestAssured.given()
+                .relaxedHTTPSValidation()
+                .headers(header)
+                .params(param)
+                .log().all()
+                .when()
+                .get(endpoint)
+                .then()
+                .log().all()
+                .extract().response();
+    }
+
+    public static Response put(Map<String, String> header, Object json, ContentType contentType, String endpoint) {
+        return response = RestAssured.given()
+                .relaxedHTTPSValidation()
+                .contentType(contentType)
+                .headers(header)
+                .body(json)
+                .log().all()
+                .when()
+                .put(endpoint)
+                .then()
+                .log().all()
+                .extract().response();
+
+    }
 }
